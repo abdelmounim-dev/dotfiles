@@ -7,6 +7,10 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        go = { 'golangcilint' },
+        protobuf = { 'buf' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -50,6 +54,10 @@ return {
           require('lint').try_lint()
         end,
       })
+
+      vim.keymap.set("n", "<leader>l", function()
+        lint.try_lint()
+      end, {desc = "Trigger [L]inting for current file"})
     end,
   },
 }
