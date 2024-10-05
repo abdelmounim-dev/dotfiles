@@ -1,1 +1,1 @@
-../../../dotfiles/fish/.config/fish/completions/php.fish
+complete -c php -x -a '(__fish_complete_subcommand)'
