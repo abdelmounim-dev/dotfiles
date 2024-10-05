@@ -1,0 +1,1 @@
+../../../dotfiles/fish/.config/fish/completions/artisan.fish

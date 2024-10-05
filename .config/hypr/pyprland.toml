@@ -1,0 +1,37 @@
+[pyprland]
+plugins = [
+    "scratchpads"
+]
+
+[scratchpads.term]
+animation = "fromTop"
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.tasks]
+animation = "fromRight"
+command = "kitty --class task -e taskwarrior-tui"
+class = "task"
+size = "35% 60%"
+position = "65% 10%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.ranger]
+animation = "fromTop"
+command = "kitty --class ranger -e ranger"
+class = "ranger"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.volume]
+animation = "fromRight"
+command = "pavucontrol"
+class = "org.pulseaudio.pavucontrol"
+size = "40% 90%"
+unfocus = "hide"
+lazy = true
