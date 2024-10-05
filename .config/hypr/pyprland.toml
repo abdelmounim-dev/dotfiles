@@ -3,6 +3,14 @@ plugins = [
     "scratchpads"
 ]
 
+[scratchpads.obsidian]
+animation = "fromTop"
+command = "obsidian"
+class = "obsidian"
+size = "75% 80%"
+max_size = "1920px 100%"
+margin = 50
+
 [scratchpads.term]
 animation = "fromTop"
 command = "kitty --class kitty-dropterm"
