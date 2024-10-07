@@ -2,7 +2,12 @@
 
 {
 
-   environment.systemPackages= with pkgs; [
+  environment.systemPackages = with pkgs; [
+    git
+    lazygit
+
+    nixfmt-rfc-style
+
     aws-sam-cli
     awscli2
     nodejs_20
@@ -13,11 +18,11 @@
     templ
     golangci-lint
     jetbrains.goland
+
     # grpc tools for go
     protobuf
     protoc-gen-go
     protoc-gen-go-grpc
-
 
     python3
 
@@ -29,7 +34,7 @@
     libgcc
     gcc
     clang
-    
+
     postgresql
     pgadmin4
     pgadmin4-desktopmode

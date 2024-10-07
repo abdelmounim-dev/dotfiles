@@ -148,10 +148,10 @@
 
     xclip
 
-    i3
-    polybar
-    rofi
-    picom
+    # i3
+    # polybar
+    # rofi
+    # picom
 
     distrobox
     podman
@@ -160,6 +160,8 @@
     pass
 
     htop
+
+    nixfmt-rfc-style
   ];
 
   programs.neovim.enable = true;
