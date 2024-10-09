@@ -11,6 +11,15 @@ size = "75% 80%"
 max_size = "1920px 100%"
 margin = 50
 
+[scratchpads.logseq]
+animation = "fromRight"
+command = "kitty --class logseq -e logseq"
+class = "logseq"
+size = "35% 80%"
+position = "65% 10%"
+max_size = "1920px 100%"
+margin = 50
+
 [scratchpads.term]
 animation = "fromTop"
 command = "kitty --class kitty-dropterm"
