@@ -2,6 +2,11 @@
 
 {
 
+  virtualisation.waydroid.enable = true;
+
+  # this is for logseq
+  nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
+
   environment.systemPackages = with pkgs; [
     amazon-ecr-credential-helper
     clang
@@ -34,5 +39,7 @@
 
     # tui file manager
     ranger
-];
+
+    logseq
+  ];
 }

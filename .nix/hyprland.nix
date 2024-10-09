@@ -26,9 +26,8 @@
   environment.systemPackages = with pkgs; [
     # bar
     (waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      })
-    )
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    }))
 
     # notifications 
     dunst
@@ -36,10 +35,9 @@
 
     #wallpapers
     swww
-    
+
     # rofi :D
     rofi-wayland
-
 
     pyprland
     hyprpicker
@@ -80,5 +78,7 @@
     # arandr equivalent for wayland
     wdisplays
     kanshi
+
+    logseq
   ];
 }
