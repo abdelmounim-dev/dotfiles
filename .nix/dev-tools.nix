@@ -19,6 +19,10 @@
     golangci-lint
     jetbrains.goland
 
+    # JAVA
+    jetbrains.idea-ultimate
+    jetbrains.jdk
+
     # grpc tools for go
     protobuf
     protoc-gen-go
