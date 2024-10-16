@@ -10,8 +10,6 @@
   environment.systemPackages = with pkgs; [
     amazon-ecr-credential-helper
     clang
-    cmatrix
-    unimatrix
 
     curl
     drawio
@@ -41,5 +39,16 @@
     ranger
 
     logseq
+
+    # time logger
+    rescuetime
+
+    # screensavers
+    cmatrix
+    unimatrix
+    pipes-rs
+    pipes
+    cbonsai
+    neo
   ];
 }
