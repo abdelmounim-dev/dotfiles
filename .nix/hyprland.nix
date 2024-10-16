@@ -69,6 +69,7 @@
 
     #clipboard
     wl-clipboard
+    cliphist
 
     # media control
     playerctl

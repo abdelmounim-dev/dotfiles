@@ -4,6 +4,10 @@
 
   virtualisation.waydroid.enable = true;
 
+  services.udev.packages = with pkgs; [ vial ];
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+  '';
   # this is for logseq
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
 
@@ -50,5 +54,15 @@
     pipes
     cbonsai
     neo
+
+    # yt
+    ytfzf
+    ueberzugpp
+
+    # keyboard customization
+    vial
+
+    # duh
+    unzip
   ];
 }
