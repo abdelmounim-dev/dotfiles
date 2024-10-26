@@ -6,6 +6,6 @@ swww img ~/Pictures/wallpaper.*
 
 wlsunset &
 
-waybar &
+wlsunset -l 36.75851497165432 -L 3.235354900705176 &
 
 dunst 

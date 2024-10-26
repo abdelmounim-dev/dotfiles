@@ -57,7 +57,16 @@
           ['<C-n>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
+          -- Overload <Tab> to accept Copilot suggestions.
+          ['<Tab>'] = cmp.mapping(function(fallback)
+              local copilot = require 'copilot.suggestion'
 
+              if copilot.is_visible() then
+                  copilot.accept()
+              else
+                  fallback()
+              end
+          end, { 'i', 's' }),
           -- Scroll the documentation window [b]ack / [f]orward
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),

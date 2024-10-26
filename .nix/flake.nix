@@ -8,12 +8,7 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }:
+    { nixpkgs, home-manager, ... }:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -35,6 +30,7 @@
             ./work-account.nix
             ./tmux-plugins.nix
             ./uni-tools.nix
+            ./games.nix
           ];
         };
       };

@@ -52,3 +52,22 @@ class = "org.pulseaudio.pavucontrol"
 size = "40% 90%"
 unfocus = "hide"
 lazy = true
+
+
+[scratchpads.music]
+animation = "fromRight"
+command = "io.bassi.Amberol"
+class = "music"
+size = "35% 60%"
+position = "5% 10%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.yt]
+animation = "fromTop"
+command = "kitty --class youtube -e ytfzf -t -T kitty"
+class = "yt"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+

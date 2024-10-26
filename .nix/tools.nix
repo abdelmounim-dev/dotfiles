@@ -64,5 +64,7 @@
 
     # duh
     unzip
+
+    vlc
   ];
 }
