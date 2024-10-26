@@ -20,6 +20,7 @@
           inherit system;
           modules = [
             ./configuration.nix
+            ./network.nix
             ./hyprland.nix
             ./dev-tools.nix
             ./docker.nix

@@ -2,13 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -56,6 +61,8 @@
     xkb.variant = "colemak";
   };
 
+  console.useXkbConfig = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -82,7 +89,10 @@
   users.users.ab = {
     isNormalUser = true;
     description = "Abdelmounim Baouia";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.yakuake
       kdePackages.konsole
@@ -95,32 +105,32 @@
       teams-for-linux
       telegram-desktop
       qbittorrent
-    #  thunderbird
+      #  thunderbird
     ];
     shell = pkgs.fish;
   };
 
   environment.sessionVariables = {
-  # If your cursor becomes invisible
-  WLR_NO_HARDWARE_CURSORS = "1";
-  # Hint electron apps to use wayland
-  NIXOS_OZONE_WL = "1";
+    # If your cursor becomes invisible
+    WLR_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
   };
 
   hardware = {
-   # Opengl
+    # Opengl
     opengl.enable = true;
 
-   # Most wayland compositors need this
+    # Most wayland compositors need this
     nvidia.modesetting.enable = true;
   };
   # Install firefox.
   programs.firefox.enable = true;
 
-# enable zsh
+  # enable zsh
   programs.zsh.enable = true;
 
-# enable fish
+  # enable fish
   programs.fish.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -129,7 +139,10 @@
   services.flatpak.enable = true;
 
   # enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
