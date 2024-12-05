@@ -6,11 +6,15 @@
     dbeaver-bin
     oracle-instantclient
     # sqldeveloper
-    squirrel-sql
+    # squirrel-sql
 
     # JAVA
     jetbrains.idea-ultimate
     jetbrains.jdk
     jetbrains.datagrip
+    eclipses.eclipse-jee
+    mysql-workbench
+
+    tomcat10
   ];
 }

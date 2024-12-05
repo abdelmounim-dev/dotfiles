@@ -1,18 +1,27 @@
 {
-  description = "test flake";
+  description = "main flake";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.05";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ inputs.hyprpanel.overlay ];
+      };
     in
     {
       nixosConfigurations = {
@@ -20,7 +29,7 @@
           inherit system;
           modules = [
             ./configuration.nix
-            ./network.nix
+            # ./network.nix
             ./hyprland.nix
             ./dev-tools.nix
             ./docker.nix
@@ -28,10 +37,11 @@
             ./tools.nix
             ./xfce-i3.nix
             ./vsftpd.nix
-            ./work-account.nix
+            # ./work-account.nix
             ./tmux-plugins.nix
             ./uni-tools.nix
             ./games.nix
+            { environment.systemPackages = with pkgs; [ hyprpanel ]; }
           ];
         };
       };

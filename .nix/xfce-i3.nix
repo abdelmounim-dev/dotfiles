@@ -12,10 +12,10 @@
       firefox
       foliate
       font-manager
-      gimp-with-plugins
+      # gimp-with-plugins
       gnome.file-roller
       gnome.gnome-disk-utility
-      inkscape-with-extensions
+      # inkscape-with-extensions
       libqalculate
       libreoffice
       orca
@@ -24,7 +24,6 @@
       thunderbird
       wmctrl
       xclip
-      xcolor
       xcolor
       xdo
       xdotool
@@ -88,9 +87,7 @@
     };
     xserver = {
       enable = true;
-      excludePackages = with pkgs; [
-        xterm
-      ];
+      excludePackages = with pkgs; [ xterm ];
       desktopManager = {
         xterm.enable = false;
         xfce = {
@@ -101,9 +98,7 @@
       };
       windowManager.i3 = {
         enable = true;
-        extraPackages = with pkgs; [
-          i3status
-        ];
+        extraPackages = with pkgs; [ i3status ];
       };
 
     };

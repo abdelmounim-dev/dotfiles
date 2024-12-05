@@ -2,22 +2,20 @@
 
 {
 
-  virtualisation.waydroid.enable = true;
-
   services.udev.packages = with pkgs; [ vial ];
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
-  # this is for logseq
-  nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
 
   environment.systemPackages = with pkgs; [
+    busybox
+    ncdu
+
     amazon-ecr-credential-helper
     clang
 
     curl
     drawio
-    kdePackages.elisa
     feh
     ffmpeg
     jetbrains-mono
@@ -41,8 +39,10 @@
 
     # tui file manager
     ranger
-
-    logseq
+    # mime image 
+    w3m
+    # file manager
+    cinnamon.nemo-with-extensions
 
     # time logger
     rescuetime
@@ -59,12 +59,23 @@
     ytfzf
     ueberzugpp
 
-    # keyboard customization
-    vial
-
     # duh
     unzip
 
     vlc
+
+    # disk usage analyzer
+    baobab
+
+    # Keyboard configuration tool
+    vial
+    qmk
+    gcc-arm-embedded
+    kmonad
+    dfu-util
+
+    ntfs3g
+
+    yt-dlp
   ];
 }

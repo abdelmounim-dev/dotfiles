@@ -14,10 +14,8 @@
 
     go
     gnumake
-    air
-    templ
     golangci-lint
-    jetbrains.goland
+    gotools
 
     # JAVA
     jetbrains.idea-ultimate
@@ -27,6 +25,7 @@
     protobuf
     protoc-gen-go
     protoc-gen-go-grpc
+    grpcurl
 
     python3
 
@@ -39,9 +38,6 @@
     gcc
     clang
 
-    postgresql
-    pgadmin4
-    pgadmin4-desktopmode
     postman
     vscode-fhs
     neovim
@@ -50,10 +46,9 @@
 
     slack
     discord
-    discordo
 
     ghc
 
-    mattermost-desktop
+    mongodb-compass
   ];
 }

@@ -45,15 +45,18 @@
     hyprlock
     hypridle
     hyprpaper
+    hyprpicker
 
-    wezterm
-    cool-retro-term
+    gpustat
+
+    # wezterm
+    # cool-retro-term
 
     starship
-    helix
+    # helix
 
-    qutebrowser
-    zathura
+    # qutebrowser
+    # zathura
     mpv
     imv
 
@@ -80,6 +83,6 @@
     wdisplays
     kanshi
 
-    logseq
+    # logseq
   ];
 }
