@@ -4,7 +4,6 @@
   environment = {
     systemPackages = with pkgs; [
       blueman
-      chromium
       deja-dup
       drawing
       elementary-xfce-icon-theme
@@ -104,5 +103,4 @@
     };
   };
 
-  sound.enable = true;
 }

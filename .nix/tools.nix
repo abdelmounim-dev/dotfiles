@@ -39,7 +39,8 @@
 
     # tui file manager
     ranger
-    # mime image 
+    yazi
+    # mime image
     w3m
     # file manager
     cinnamon.nemo-with-extensions
@@ -58,11 +59,13 @@
     # yt
     ytfzf
     ueberzugpp
+    gtk-pipe-viewer
 
     # duh
     unzip
 
     vlc
+    amberol
 
     # disk usage analyzer
     baobab
@@ -77,5 +80,15 @@
     ntfs3g
 
     yt-dlp
+
+    # cat but better
+    bat
+
+    stow
+
+    starship
+    zoxide
+
+    telegram-desktop
   ];
 }

@@ -16,6 +16,8 @@
     gnumake
     golangci-lint
     gotools
+    air
+    templ
 
     # JAVA
     jetbrains.idea-ultimate
@@ -28,10 +30,12 @@
     grpcurl
 
     python3
+    jetbrains.pycharm-community-bin
 
     tree
 
     redis
+    postgresql
 
     rustup # needed for tools that use rust such as nil lsp
     libgcc
@@ -40,6 +44,7 @@
 
     postman
     vscode-fhs
+    code-cursor
     neovim
     # zed-editor
     ripgrep

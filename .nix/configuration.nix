@@ -94,9 +94,6 @@
       "wheel"
     ];
     packages = with pkgs; [
-      kdePackages.yakuake
-      kdePackages.konsole
-      kdePackages.kate
       stow
 
       starship
@@ -104,9 +101,17 @@
 
       teams-for-linux
       telegram-desktop
-      qbittorrent
-      #  thunderbird
     ];
+    shell = pkgs.fish;
+  };
+
+  users.users.work = {
+    isNormalUser = true;
+    description = "Work User";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ]; # Adjust groups as needed
     shell = pkgs.fish;
   };
 
@@ -148,7 +153,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     # tmux
-
+    zen-browser.packages."${system}".specific
     killall
 
     git
@@ -206,6 +211,17 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    powerManagement.enable = true;
+    open = false; # Change to true if you want the open-source driver
+  };
+
+  # disable laptop keyboard
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Asus Keyboard", ATTR{enabled}="0"
+  '';
 
 }

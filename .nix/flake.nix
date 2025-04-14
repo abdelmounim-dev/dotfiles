@@ -2,10 +2,11 @@
   description = "main flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs =
@@ -13,6 +14,7 @@
       self,
       nixpkgs,
       home-manager,
+      zen-browser,
       ...
     }@inputs:
     let
@@ -29,18 +31,19 @@
           inherit system;
           modules = [
             ./configuration.nix
-            # ./network.nix
-            ./hyprland.nix
             ./dev-tools.nix
             ./docker.nix
-            ./productivity.nix
-            ./tools.nix
-            ./xfce-i3.nix
-            ./vsftpd.nix
-            # ./work-account.nix
-            ./tmux-plugins.nix
-            ./uni-tools.nix
             ./games.nix
+            ./hyprland.nix
+            ./productivity.nix
+            ./tmux-plugins.nix
+            ./tools.nix
+            ./uni-tools.nix
+            ./vsftpd.nix
+            ./vms.nix
+            ./xfce-i3.nix
+            # ./network.nix
+            # ./work-account.nix
             { environment.systemPackages = with pkgs; [ hyprpanel ]; }
           ];
         };

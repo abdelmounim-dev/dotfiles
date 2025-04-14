@@ -29,7 +29,7 @@
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     }))
 
-    # notifications 
+    # notifications
     dunst
     libnotify
 

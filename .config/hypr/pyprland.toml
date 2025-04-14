@@ -37,10 +37,10 @@ position = "65% 10%"
 max_size = "1920px 100%"
 margin = 50
 
-[scratchpads.ranger]
+[scratchpads.fileManager]
 animation = "fromTop"
-command = "kitty --class ranger -e ranger"
-class = "ranger"
+command = "kitty --class fm -e yazi"
+class = "fm"
 size = "75% 60%"
 max_size = "1920px 100%"
 margin = 50
@@ -64,7 +64,7 @@ lazy = true
 #
 [scratchpads.yt]
 animation = "fromTop"
-command = "kitty --class youtube -e ytfzf -t -T kitty"
+command = "kitty --class youtube -e pipe-viewer"
 class = "yt"
 size = "75% 60%"
 max_size = "1920px 100%"
