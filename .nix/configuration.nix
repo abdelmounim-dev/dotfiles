@@ -153,7 +153,6 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     # tmux
-    zen-browser.packages."${system}".specific
     killall
 
     git
@@ -174,7 +173,7 @@
     distrobox
     podman
 
-    nerdfonts
+    nerd-fonts.jetbrains-mono
     pass
 
     htop
@@ -211,7 +210,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
@@ -222,6 +221,18 @@
   # disable laptop keyboard
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Asus Keyboard", ATTR{enabled}="0"
+  '';
+  boot.kernelPackages = pkgs.linuxPackages_5_15;
+  # cpuset
+  boot.kernelParams = [
+    "systemd.unified_cgroup_hierarchy=1"
+    "cgroup_no_v1=all"
+    "cgroup_enable=cpuset"
+  ];
+  boot.kernelModules = [ "cpuset" ];
+
+  systemd.extraConfig = ''
+    DefaultControllers=cpu cpuset io memory pids
   '';
 
 }

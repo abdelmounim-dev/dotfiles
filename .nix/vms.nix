@@ -2,10 +2,15 @@
 
 {
   programs.dconf.enable = true;
+  programs.virt-manager.enable = true;
 
   virtualisation.podman = {
     enable = true;
   };
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  # users.extraGroups.vboxusers.members = [ "ab" ];
 
   environment.systemPackages = with pkgs; [
     virt-manager
@@ -15,8 +20,11 @@
     spice-protocol
     win-virtio
     win-spice
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     distrobox
+    docker-machine-kvm2
+    qemu
+    gnome-boxes
   ];
 
   virtualisation = {
@@ -29,6 +37,13 @@
       };
     };
     spiceUSBRedirection.enable = true;
+  };
+  users.users.ab = {
+    extraGroups = [
+      "libvirtd"
+      "kvm"
+      "vboxusers"
+    ];
   };
   services.spice-vdagentd.enable = true;
 }

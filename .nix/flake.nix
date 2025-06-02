@@ -2,8 +2,8 @@
   description = "main flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    nixpkgs.url = "nixpkgs/nixos-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
@@ -33,6 +33,7 @@
             ./configuration.nix
             ./dev-tools.nix
             ./docker.nix
+            # ./kubernetes.nix
             ./games.nix
             ./hyprland.nix
             ./productivity.nix
@@ -41,7 +42,8 @@
             ./uni-tools.nix
             ./vsftpd.nix
             ./vms.nix
-            ./xfce-i3.nix
+            ./nerdfonts.nix
+            # ./xfce-i3.nix
             # ./network.nix
             # ./work-account.nix
             { environment.systemPackages = with pkgs; [ hyprpanel ]; }

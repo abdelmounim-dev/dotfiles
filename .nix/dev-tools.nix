@@ -42,7 +42,7 @@
     gcc
     clang
 
-    postman
+    # postman
     vscode-fhs
     code-cursor
     neovim
@@ -55,5 +55,10 @@
     ghc
 
     mongodb-compass
+
+    minikube
+    kubectl
+    nginx
+    kubernetes-helm
   ];
 }

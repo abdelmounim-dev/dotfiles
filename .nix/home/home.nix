@@ -25,22 +25,22 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  # config 
+  # config
   #
-  programs.git = {
-    enable = true;
-    userName = "Abdelmounim Baouia";
-    userEmail = "abdelmounimbaouia@gmail.com";
-    extraConfig = {
-      core.editor = "vim";
-      init.defaultBranch = "main";
-      url = {
-        "ssh://git@github.com/" = {
-          insteadOf = "https://github.com/";
-        };
-      };
-    };
-  };
+  # programs.git = {
+  #   enable = true;
+  #   userName = "Abdelmounim Baouia";
+  #   userEmail = "abdelmounimbaouia@gmail.com";
+  #   extraConfig = {
+  #     core.editor = "vim";
+  #     init.defaultBranch = "main";
+  #     # url = {
+  #     #   "ssh://git@github.com/" = {
+  #     #     insteadOf = "https://github.com/";
+  #     #   };
+  #     # };
+  #   };
+  # };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

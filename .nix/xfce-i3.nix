@@ -12,7 +12,7 @@
       foliate
       font-manager
       # gimp-with-plugins
-      gnome.file-roller
+      file-roller
       gnome.gnome-disk-utility
       # inkscape-with-extensions
       libqalculate

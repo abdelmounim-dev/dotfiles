@@ -15,7 +15,7 @@
     clang
 
     curl
-    drawio
+    # drawio
     feh
     ffmpeg
     jetbrains-mono
@@ -43,7 +43,7 @@
     # mime image
     w3m
     # file manager
-    cinnamon.nemo-with-extensions
+    # cinnamon.nemo-with-extensions
 
     # time logger
     rescuetime
@@ -90,5 +90,8 @@
     zoxide
 
     telegram-desktop
+    ticktick
+
+    gnome-disk-utility
   ];
 }
