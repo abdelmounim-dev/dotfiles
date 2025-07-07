@@ -29,6 +29,14 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # networking.nameservers = [
+  #   "208.67.222.123"
+  #   "208.67.220.123"
+  # ];
+  # networking.networkmanager.insertNameservers = [
+  #   "208.67.222.123"
+  #   "208.67.220.123"
+  # ];
   # Set your time zone.
   time.timeZone = "Africa/Algiers";
 
@@ -219,17 +227,47 @@
   };
 
   # disable laptop keyboard
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Asus Keyboard", ATTR{enabled}="0"
-  '';
-  boot.kernelPackages = pkgs.linuxPackages_5_15;
+  # services.udev.extraRules = ''
+  #   ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Asus Keyboard", ATTR{enabled}="0"
+  # '';
   # cpuset
-  boot.kernelParams = [
-    "systemd.unified_cgroup_hierarchy=1"
-    "cgroup_no_v1=all"
-    "cgroup_enable=cpuset"
+  # boot.kernelParams = [
+  #   "systemd.unified_cgroup_hierarchy=0"
+  # ];
+  # boot.kernelModules = [ "cpuset" ];
+
+  security.pam.loginLimits = [
+    # General good defaults (adjust as needed, these are often already sufficient)
+    {
+      domain = "*";
+      item = "nofile";
+      type = "-";
+      value = "1048576";
+    }
+    {
+      domain = "*";
+      item = "nproc";
+      type = "-";
+      value = "unlimited";
+    } # Or a very large number
+
+    # Specific attempt to allow setting higher priority (lower nice value)
+    # This allows any user to renice processes to -20 (highest priority)
+    # The '*' domain applies to all users. You could restrict it to your user
+    # e.g., { domain = "<your_username>"; item = "nice"; type = "-"; value = "-20"; }
+    # but for rootless containers to function generally, allowing it for '*' might be needed
+    # if the container itself doesn't run as your specific host UID.
+    {
+      domain = "*";
+      item = "nice";
+      type = "-";
+      value = "-20";
+    } # Allows renicing down to -20
+
+    # You might also need to explicitly allow real-time priority if that becomes an issue later
+    # { domain = "*"; item = "rtprio"; type = "-"; value = "99"; }
   ];
-  boot.kernelModules = [ "cpuset" ];
+  systemd.services."user@".serviceConfig.Delegate = "memory pids cpu cpuset";
 
   systemd.extraConfig = ''
     DefaultControllers=cpu cpuset io memory pids

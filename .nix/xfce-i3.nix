@@ -13,43 +13,43 @@
       font-manager
       # gimp-with-plugins
       file-roller
-      gnome.gnome-disk-utility
+      # gnome.gnome-disk-utility
       # inkscape-with-extensions
       libqalculate
       libreoffice
       orca
       pavucontrol
       qalculate-gtk
-      thunderbird
+      # thunderbird
       wmctrl
-      xclip
-      xcolor
-      xdo
-      xdotool
-      xfce.catfish
-      xfce.gigolo
-      xfce.orage
-      xfce.xfburn
-      xfce.xfce4-terminal
-      xfce.xfce4-appfinder
-      xfce.xfce4-clipman-plugin
-      xfce.xfce4-cpugraph-plugin
-      xfce.xfce4-dict
-      xfce.xfce4-fsguard-plugin
-      xfce.xfce4-genmon-plugin
-      xfce.xfce4-netload-plugin
-      xfce.xfce4-panel
-      xfce.xfce4-pulseaudio-plugin
-      xfce.xfce4-systemload-plugin
-      xfce.xfce4-weather-plugin
-      xfce.xfce4-whiskermenu-plugin
-      xfce.xfce4-xkb-plugin
-      xfce.xfdashboard
-      xorg.xev
-      xsel
-      xtitle
-      xwinmosaic
-      zuki-themes
+      # xclip
+      # xcolor
+      # xdo
+      # xdotool
+      # xfce.catfish
+      # xfce.gigolo
+      # xfce.orage
+      # xfce.xfburn
+      # xfce.xfce4-terminal
+      # xfce.xfce4-appfinder
+      # xfce.xfce4-clipman-plugin
+      # xfce.xfce4-cpugraph-plugin
+      # xfce.xfce4-dict
+      # xfce.xfce4-fsguard-plugin
+      # xfce.xfce4-genmon-plugin
+      # xfce.xfce4-netload-plugin
+      # xfce.xfce4-panel
+      # xfce.xfce4-pulseaudio-plugin
+      # xfce.xfce4-systemload-plugin
+      # xfce.xfce4-weather-plugin
+      # xfce.xfce4-whiskermenu-plugin
+      # xfce.xfce4-xkb-plugin
+      # xfce.xfdashboard
+      # xorg.xev
+      # xsel
+      # xtitle
+      # xwinmosaic
+      # zuki-themes
 
       haskellPackages.greenclip
     ];
@@ -84,23 +84,23 @@
       };
       pulse.enable = true;
     };
-    xserver = {
-      enable = true;
-      excludePackages = with pkgs; [ xterm ];
-      desktopManager = {
-        xterm.enable = false;
-        xfce = {
-          enable = true;
-          noDesktop = true;
-          enableXfwm = false;
-        };
-      };
-      windowManager.i3 = {
-        enable = true;
-        extraPackages = with pkgs; [ i3status ];
-      };
-
-    };
+    # xserver = {
+    #   enable = true;
+    #   excludePackages = with pkgs; [ xterm ];
+    #   desktopManager = {
+    #     xterm.enable = false;
+    #     xfce = {
+    #       enable = true;
+    #       noDesktop = true;
+    #       enableXfwm = false;
+    #     };
+    #   };
+    #   windowManager.i3 = {
+    #     enable = true;
+    #     extraPackages = with pkgs; [ i3status ];
+    #   };
+    #
+    # };
   };
 
 }

@@ -24,28 +24,30 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
-
+  home.sessionPath = [
+    "${config.home.homeDirectory}/go/bin"
+    "${config.home.homeDirectory}/.npm-global/bin"
+  ];
   # config
-  #
-  # programs.git = {
-  #   enable = true;
-  #   userName = "Abdelmounim Baouia";
-  #   userEmail = "abdelmounimbaouia@gmail.com";
-  #   extraConfig = {
-  #     core.editor = "vim";
-  #     init.defaultBranch = "main";
-  #     # url = {
-  #     #   "ssh://git@github.com/" = {
-  #     #     insteadOf = "https://github.com/";
-  #     #   };
-  #     # };
-  #   };
-  # };
+
+  programs.git = {
+    enable = true;
+    userName = "Abdelmounim Baouia";
+    userEmail = "abdelmounimbaouia@gmail.com";
+    extraConfig = {
+      core.editor = "vim";
+      init.defaultBranch = "main";
+      # url = {
+      #   "ssh://git@github.com/" = {
+      #     insteadOf = "https://github.com/";
+      #   };
+      # };
+    };
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   #home.packages = with pkgs [
-  #kdePackages.yakuake
   # # Adds the 'hello' command to your environment. It prints a friendly
   # # "Hello, world!" when run.
   # pkgs.hello
@@ -98,6 +100,195 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  programs.fish = {
+    enable = true;
+
+    functions = {
+      fish_greeting = ''
+        # no greeting
+      '';
+    };
+  };
+  programs.zsh.enable = true;
+  programs.bash.enable = true;
+  programs.kitty = {
+    enable = true;
+    # Optionally override the kitty package
+    # package = pkgs.kitty;
+
+    font = {
+      name = "JetBrainsMono Nerd Font"; # or your preferred font
+      size = 12.0;
+      # package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+    };
+
+    # Main settings (not theme-related)
+    settings = {
+      background_opacity = 0.2;
+      background_blur = 1;
+      confirm_os_window_close = 0;
+      tab_bar_min_tabs = 2;
+      tab_bar_edge = "bottom";
+      tab_bar_style = "powerline";
+      tab_powerline_style = "slanted";
+      tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+    };
+
+    # Colors and theming
+    extraConfig = ''
+      # Cursor colors
+      cursor                  #F5E0DC
+      cursor_text_color       #1E1E2E
+
+      # URL underline color
+      url_color               #F5E0DC
+
+      # Kitty window border colors
+      active_border_color     #B4BEFE
+      inactive_border_color   #6C7086
+      bell_border_color       #F9E2AF
+
+      # OS Window titlebar colors
+      wayland_titlebar_color system
+      macos_titlebar_color system
+
+      # Tab bar colors
+      active_tab_foreground   #11111B
+      active_tab_background   #CBA6F7
+      inactive_tab_foreground #CDD6F4
+      inactive_tab_background #181825
+      tab_bar_background      #11111B
+
+      # Colors for marks
+      mark1_foreground #1E1E2E
+      mark1_background #B4BEFE
+      mark2_foreground #1E1E2E
+      mark2_background #CBA6F7
+      mark3_foreground #1E1E2E
+      mark3_background #74C7EC
+
+      # 16 terminal colors
+      foreground              #CDD6F4
+      background              #1E1E2E
+      selection_foreground    #1E1E2E
+      selection_background    #F5E0DC
+
+      color0  #45475A
+      color8  #585B70
+      color1  #F38BA8
+      color9  #F38BA8
+      color2  #A6E3A1
+      color10 #A6E3A1
+      color3  #F9E2AF
+      color11 #F9E2AF
+      color4  #89B4FA
+      color12 #89B4FA
+      color5  #F5C2E7
+      color13 #F5C2E7
+      color6  #94E2D5
+      color14 #94E2D5
+      color7  #BAC2DE
+      color15 #A6ADC8
+    '';
+  };
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    # custom settings
+    settings = {
+      add_newline = true;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = false;
+    };
+  };
+
+  # programs.tmux = {
+  #     enable       = true;
+  #     package      = pkgs.tmux;
+  #     # built‑in options
+  #     historyLimit = 1000000;  # set -g history-limit 1000000
+  #     keyMode      = "vi";     # setw -g mode-keys vi
+  #     mouse        = true;     # set -g mouse on
+  #     escapeTime   = 0;        # set -g escape-time 0
+  #
+  #     extraConfig = ''
+  #       # reload config
+  #       unbind r
+  #       bind r source-file ~/.config/tmux/tmux.conf
+  #
+  #       # change prefix to Alt‑a
+  #       set -g prefix M-a
+  #
+  #       # don't exit tmux when killing last client
+  #       set -g detach-on-destroy off
+  #
+  #       # renumber windows after one is closed
+  #       set -g renumber-windows on
+  #
+  #       # place status bar at top
+  #       set -g status-position top
+  #
+  #       ## Catppuccin theme settings
+  #       set -g @catppuccin_window_left_separator  ""
+  #       set -g @catppuccin_window_right_separator " "
+  #       set -g @catppuccin_window_middle_separator " █"
+  #       set -g @catppuccin_window_number_position "right"
+  #       set -g @catppuccin_window_default_fill   "number"
+  #       set -g @catppuccin_window_default_text   "#W"
+  #       set -g @catppuccin_window_current_fill   "number"
+  #       set -g @catppuccin_window_current_text   "#W#{?window_zoomed_flag,(),}"
+  #       set -g @catppuccin_status_modules_right  "directory meetings date_time"
+  #       set -g @catppuccin_status_modules_left   "session"
+  #       set -g @catppuccin_status_left_separator  " "
+  #       set -g @catppuccin_status_right_separator " "
+  #       set -g @catppuccin_status_right_separator_inverse "no"
+  #       set -g @catppuccin_status_fill            "icon"
+  #       set -g @catppuccin_status_connect_separator "no"
+  #       set -g @catppuccin_directory_text        "#{b:pane_current_path}"
+  #       set -g @catppuccin_meetings_text         "#($HOME/.config/tmux/scripts/cal.sh)"
+  #       set -g @catppuccin_date_time_text        "%H:%M"
+  #
+  #       ## Pane navigation (vi‑style)
+  #       unbind C-h
+  #       unbind C-j
+  #       unbind C-k
+  #       unbind C-l
+  #
+  #       bind-key -n M-h select-pane -L
+  #       bind-key -n M-j select-pane -D
+  #       bind-key -n M-k select-pane -U
+  #       bind-key -n M-l select-pane -R
+  #
+  #       # fast window cycle
+  #       bind -r C-h select-window -t :-
+  #       bind -r C-l select-window -t :+
+  #
+  #       ## Clipboard integration (wl‑copy)
+  #       set -g set-clipboard off
+  #       bind-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel "wl-copy"
+  #       bind-key -n -T copy-mode-vi Enter               send-keys -X copy-pipe-and-cancel "wl-copy"
+  #     '';
+  #
+  #     plugins = [
+  #       # plugin manager
+  #       { plugin = "tmux-plugins/tpm"; }
+  #
+  #       # theme
+  #       { plugin = "catppuccin/tmux";   }
+  #
+  #       # restore & continuum
+  #       { plugin = "tmux-plugins/tmux-resurrect"; }
+  #       { plugin = "tmux-plugins/tmux-continuum"; extraConfig = "set -g @continuum-restore 'on'"; }
+  #
+  #       # other plugins
+  #       { plugin = "tmux-plugins/tmux-open"; }
+  #       { plugin = "tmux-plugins/tmux-yank"; }
+  #     ];
+  #   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

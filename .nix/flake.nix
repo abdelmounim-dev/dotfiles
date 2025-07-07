@@ -3,10 +3,16 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+    	url = "github:nix-community/home-manager/release-25.05";
+    	inputs.nixpkgs.follows = "nixpkgs";
+	};
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -43,18 +49,26 @@
             ./vsftpd.nix
             ./vms.nix
             ./nerdfonts.nix
-            # ./xfce-i3.nix
-            # ./network.nix
+            ./xfce-i3.nix
+            ./network.nix
             # ./work-account.nix
             { environment.systemPackages = with pkgs; [ hyprpanel ]; }
-          ];
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.users.ab = import ./home/home.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+          }];
         };
       };
-      homeConfigurations = {
-        ab = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home/home.nix ];
-        };
-      };
+      # homeConfigurations = {
+      #   ab = home-manager.lib.homeManagerConfiguration {
+      #     inherit pkgs;
+      #     modules = [ ./home/home.nix ];
+      #   };
+      # };
     };
 }

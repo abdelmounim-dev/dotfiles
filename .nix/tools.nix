@@ -93,5 +93,9 @@
     ticktick
 
     gnome-disk-utility
+
+    # parental control
+    malcontent
+    malcontent-ui
   ];
 }

@@ -45,8 +45,9 @@
     # postman
     vscode-fhs
     code-cursor
+    windsurf
     neovim
-    # zed-editor
+    zed-editor
     ripgrep
 
     slack
@@ -60,5 +61,8 @@
     kubectl
     nginx
     kubernetes-helm
+
+    k6
+    dotenv-cli
   ];
 }
