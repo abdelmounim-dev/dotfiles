@@ -25,8 +25,8 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
   home.sessionPath = [
-    "${config.home.homeDirectory}/go/bin"
-    "${config.home.homeDirectory}/.npm-global/bin"
+    "$HOME/go/bin"
+    "$HOME/.npm-global/bin"
   ];
   # config
 
