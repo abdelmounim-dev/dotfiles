@@ -75,7 +75,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -132,7 +132,7 @@
 
   hardware = {
     # Opengl
-    opengl.enable = true;
+    graphics.enable = true;
 
     # Most wayland compositors need this
     nvidia.modesetting.enable = true;
