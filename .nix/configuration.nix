@@ -94,12 +94,14 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.groups.shared = { };
   users.users.ab = {
     isNormalUser = true;
     description = "Abdelmounim Baouia";
     extraGroups = [
       "networkmanager"
       "wheel"
+      "shared"
     ];
     packages = with pkgs; [
       stow
@@ -119,6 +121,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "shared"
     ]; # Adjust groups as needed
     shell = pkgs.fish;
   };
