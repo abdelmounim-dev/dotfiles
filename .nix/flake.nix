@@ -60,6 +60,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.ab = import ./home/home.nix;
+              home-manager.users.work = import ./home/work.nix;
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
             }
