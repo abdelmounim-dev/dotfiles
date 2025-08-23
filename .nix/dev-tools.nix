@@ -13,6 +13,7 @@
     nodejs_20
 
     go
+    go-migrate
     gnumake
     golangci-lint
     gotools
@@ -42,7 +43,8 @@
     gcc
     clang
 
-    # postman
+    postman
+    insomnia
     vscode-fhs
     code-cursor
     windsurf
@@ -64,5 +66,10 @@
 
     k6
     dotenv-cli
+    ngrok
+
+    jq
+
+    graphviz
   ];
 }
