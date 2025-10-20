@@ -8,6 +8,7 @@
   '';
 
   environment.systemPackages = with pkgs; [
+    chromium
     busybox
     ncdu
 
@@ -97,5 +98,6 @@
     # parental control
     malcontent
     malcontent-ui
+    foliate
   ];
 }

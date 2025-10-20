@@ -61,6 +61,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.ab = import ./home/home.nix;
               home-manager.users.work = import ./home/work.nix;
+              home-manager.users.smeetz = import ./home/smeetz.nix;
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
             }

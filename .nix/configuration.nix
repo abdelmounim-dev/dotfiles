@@ -66,7 +66,8 @@
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
-    xkb.variant = "colemak";
+    # use colemak on keyboard instea
+    # xkb.variant = "colemak";
   };
 
   console.useXkbConfig = true;
@@ -117,7 +118,7 @@
 
   users.users.work = {
     isNormalUser = true;
-    description = "Work User";
+    description = "Work";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -125,6 +126,29 @@
     ]; # Adjust groups as needed
     shell = pkgs.fish;
   };
+  users.users.smeetz = {
+    isNormalUser = true;
+    description = "smeetz";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "shared"
+    ]; # Adjust groups as needed
+    shell = pkgs.fish;
+  };
+  users.users.tool = {
+    isNormalUser = true;
+    # isSystemUser = true;
+    description = "tool";
+    group = "tool";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "shared"
+    ]; # Adjust groups as needed
+    shell = pkgs.fish;
+  };
+  users.groups.tool = { };
 
   environment.sessionVariables = {
     # If your cursor becomes invisible
