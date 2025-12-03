@@ -8,4 +8,5 @@
     setSocketVariable = true;
   };
   users.users.ab.extraGroups = [ "docker" ];
+  users.users.smeetz.extraGroups = [ "docker" ];
 }

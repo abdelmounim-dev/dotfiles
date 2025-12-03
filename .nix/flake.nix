@@ -51,6 +51,7 @@
             ./nerdfonts.nix
             ./xfce-i3.nix
             ./work-tools.nix
+            ./ecom-tools.nix
             # ./network.nix
             # ./work-account.nix
             { environment.systemPackages = with pkgs; [ hyprpanel ]; }

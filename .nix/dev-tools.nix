@@ -3,6 +3,8 @@
 {
 
   environment.systemPackages = with pkgs; [
+    php
+    php84Packages.composer
     git
     lazygit
 

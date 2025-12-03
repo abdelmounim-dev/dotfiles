@@ -13,8 +13,8 @@
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "smeetz";
-  home.homeDirectory = "/home/smeetz";
+  home.username = "tool";
+  home.homeDirectory = "/home/tool";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -33,13 +33,10 @@
   programs.git = {
     enable = true;
     userName = "Abdelmounim Baouia";
-    userEmail = "abdelmounim.baouia@smeetz.com";
+    userEmail = "abdelmonimbaouia@gmail.com";
     extraConfig = {
       core.editor = "vim";
       init.defaultBranch = "main";
-      safe.directory = [
-        "/home/smeetz/smeetz-services"
-      ];
       # url = {
       #   "ssh://git@github.com/" = {
       #     insteadOf = "https://github.com/";

@@ -9,9 +9,11 @@
 
   environment.systemPackages = with pkgs; [
     chromium
+    brave
     busybox
     ncdu
 
+    obsidian
     amazon-ecr-credential-helper
     clang
 
