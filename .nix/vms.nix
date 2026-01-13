@@ -8,8 +8,8 @@
     enable = true;
   };
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
   # users.extraGroups.vboxusers.members = [ "ab" ];
 
   environment.systemPackages = with pkgs; [
@@ -18,7 +18,7 @@
     spice
     spice-gtk
     spice-protocol
-    win-virtio
+    virtio-win
     win-spice
     adwaita-icon-theme
     distrobox
@@ -32,8 +32,7 @@
       enable = true;
       qemu = {
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
+
       };
     };
     spiceUSBRedirection.enable = true;

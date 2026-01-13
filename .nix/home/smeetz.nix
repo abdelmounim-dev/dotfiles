@@ -27,14 +27,15 @@
   home.sessionPath = [
     "$HOME/go/bin"
     "$HOME/.npm-global/bin"
+    "$HOME/.local/bin"
   ];
   # config
 
   programs.git = {
     enable = true;
-    userName = "Abdelmounim Baouia";
-    userEmail = "abdelmounim.baouia@smeetz.com";
-    extraConfig = {
+    settings = {
+      user.name = "Abdelmounim Baouia";
+      user.email = "abdelmounim.baouia@smeetz.com";
       core.editor = "vim";
       init.defaultBranch = "main";
       safe.directory = [

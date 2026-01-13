@@ -298,11 +298,48 @@
   ];
   systemd.services."user@".serviceConfig.Delegate = "memory pids cpu cpuset";
 
-  systemd.extraConfig = ''
-    DefaultControllers=cpu cpuset io memory pids
-  '';
+  systemd.settings.Manager = {
+    DefaultControllers = "cpu cpuset io memory pids";
+  };
   systemd.tmpfiles.rules = [
     "d /home/smeetz 2770 smeetz shared -"
   ];
+
+  # trying to fix the vpn
+  networking.extraHosts = ''
+    3.77.166.199 vpn.smeetz.com
+    3.77.166.199 vpn.anon-sce9f.domain
+  '';
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 443 ];
+    allowedUDPPorts = [
+      51820
+      3478
+    ]; # Default WireGuard port
+    allowedUDPPortRanges = [
+      {
+        from = 32768;
+        to = 61000;
+      } # Port range for STUN/ICE
+    ];
+    trustedInterfaces = [ "wt0" ];
+  };
+
+  services.resolved = {
+    # enable = true;
+    # Disable DNSSEC which often breaks internal VPN domains
+    dnssec = "false";
+    # Set a global fallback so your machine can always find
+    # the management server even if NetBird's DNS stalls
+    fallbackDns = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
+    extraConfig = ''
+      Domains=~.
+      ReadEtcHosts=yes
+    '';
+  };
 
 }

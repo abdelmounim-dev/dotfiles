@@ -101,5 +101,7 @@
     malcontent
     malcontent-ui
     foliate
+
+    caligula
   ];
 }

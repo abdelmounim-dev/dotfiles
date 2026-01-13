@@ -32,9 +32,9 @@
 
   programs.git = {
     enable = true;
-    userName = "Abdelmounim Baouia";
-    userEmail = "abdelmounim.baouia@lastingdynamics.com";
-    extraConfig = {
+    settings = {
+      user.name = "Abdelmounim Baouia";
+      user.email = "abdelmounim.baouia@lastingdynamics.com";
       core.editor = "vim";
       init.defaultBranch = "main";
       # url = {

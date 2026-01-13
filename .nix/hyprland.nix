@@ -37,7 +37,7 @@
     swww
 
     # rofi :D
-    rofi-wayland
+    rofi
 
     pyprland
     hyprpicker

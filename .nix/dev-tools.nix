@@ -3,14 +3,14 @@
 {
 
   environment.systemPackages = with pkgs; [
-    php
-    php84Packages.composer
+    php83
+    php83Packages.composer
     git
     lazygit
 
     nixfmt-rfc-style
 
-    aws-sam-cli
+    # aws-sam-cli
     awscli2
     nodejs_20
 
@@ -23,8 +23,8 @@
     templ
 
     # JAVA
-    jetbrains.idea-ultimate
-    jetbrains.jdk
+    # jetbrains.idea-ultimate
+    # jetbrains.jdk
 
     # grpc tools for go
     protobuf
@@ -33,7 +33,7 @@
     grpcurl
 
     python3
-    jetbrains.pycharm-community-bin
+    # jetbrains.pycharm-community-bin
 
     tree
 
@@ -47,8 +47,9 @@
 
     postman
     insomnia
-    vscode-fhs
-    code-cursor
+    # vscode-fhs
+    code-cursor-fhs
+    antigravity-fhs
     windsurf
     neovim
     zed-editor

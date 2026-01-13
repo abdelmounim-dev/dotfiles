@@ -2,13 +2,12 @@
   description = "main flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "nixpkgs/nixos-25.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +19,6 @@
       self,
       nixpkgs,
       home-manager,
-      zen-browser,
       ...
     }@inputs:
     let
@@ -28,7 +26,6 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ inputs.hyprpanel.overlay ];
       };
     in
     {
@@ -45,7 +42,7 @@
             ./productivity.nix
             ./tmux-plugins.nix
             ./tools.nix
-            ./uni-tools.nix
+            # ./uni-tools.nix
             ./vsftpd.nix
             ./vms.nix
             ./nerdfonts.nix
