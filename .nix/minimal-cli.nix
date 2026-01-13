@@ -10,13 +10,13 @@
     ./core.nix
     # This should point to the hardware configuration for your new machine.
     # Generate it with `nixos-generate-config` on the new machine and copy it here.
-    ./minimal-hardware.nix 
+    ./hardware-configuration.nix
   ];
 
   # ==========================================
   # Hostname
   # ==========================================
-  networking.hostName = "minimal-cli"; 
+  networking.hostName = "minimal-cli";
 
   # ==========================================
   # User for Minimal Machine
@@ -24,7 +24,10 @@
   users.users.ab = {
     isNormalUser = true;
     description = "Abdelmounim Baouia";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
   };
 
