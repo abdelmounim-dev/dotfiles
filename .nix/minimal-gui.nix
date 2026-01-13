@@ -9,6 +9,8 @@
   imports = [
     ./minimal-cli.nix
     ./hyprland.nix
+    ./core-dev-tools.nix
+    ./core-gui-utils.nix
   ];
 
   # ==========================================
@@ -16,14 +18,19 @@
   # ==========================================
   networking.hostName = lib.mkForce "minimal-gui";
 
+  # Virtualization (Podman with Docker compat)
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true; # Often needed for tools that talk to docker socket
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
   # ==========================================
-  # GUI Specifics
+  # GUI Specifics & Fonts
   # ==========================================
   
-  # Enable sound/pipewire (already in core, but good to ensure if audio is needed)
-  # services.pipewire.enable = true; 
-
-  # Essential GUI Apps for a minimal setup
+  # Essential GUI Apps and Dev Tools
   environment.systemPackages = with pkgs; [
     kitty # Terminal
     wofi  # Launcher (simpler than rofi for minimal, or keep rofi from hyprland.nix)
@@ -31,8 +38,5 @@
     # Browser 
     firefox 
     google-chrome
-
-    # Tools
-    antigravity-fhs
   ];
 }

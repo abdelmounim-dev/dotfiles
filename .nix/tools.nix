@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./core-tools.nix ];
 
   services.udev.packages = with pkgs; [ vial ];
   services.udev.extraRules = ''
@@ -42,7 +43,6 @@
 
     # tui file manager
     ranger
-    yazi
     # mime image
     w3m
     # file manager
@@ -65,7 +65,6 @@
     gtk-pipe-viewer
 
     # duh
-    unzip
 
     vlc
     amberol
@@ -84,13 +83,7 @@
 
     yt-dlp
 
-    # cat but better
-    bat
-
     stow
-
-    starship
-    zoxide
 
     telegram-desktop
     ticktick
