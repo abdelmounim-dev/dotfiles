@@ -28,7 +28,11 @@
     kitty # Terminal
     wofi  # Launcher (simpler than rofi for minimal, or keep rofi from hyprland.nix)
     
-    # Browser (optional for minimal, uncomment if needed)
-    # firefox 
+    # Browser 
+    firefox 
+    google-chrome
+
+    # Tools
+    antigravity-fhs
   ];
 }
