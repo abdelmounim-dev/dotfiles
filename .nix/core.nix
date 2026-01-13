@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 
 {
   # ==========================================
@@ -16,20 +11,14 @@
   # Networking
   # ==========================================
   networking.networkmanager.enable = true;
-
+  
   # Firewall
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 443 ];
-    allowedUDPPorts = [
-      51820
-      3478
-    ];
+    allowedUDPPorts = [ 51820 3478 ]; 
     allowedUDPPortRanges = [
-      {
-        from = 32768;
-        to = 61000;
-      }
+      { from = 32768; to = 61000; }
     ];
     trustedInterfaces = [ "wt0" ];
   };
@@ -44,16 +33,13 @@
   services.resolved = {
     enable = true;
     dnssec = "false";
-    fallbackDns = [
-      "1.1.1.1"
-      "8.8.8.8"
-    ];
+    fallbackDns = [ "1.1.1.1" "8.8.8.8" ];
     extraConfig = ''
       Domains=~.
       ReadEtcHosts=yes
     '';
   };
-
+  
   # VPN
   services.netbird.enable = true;
 
@@ -73,14 +59,14 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
+  
   console.useXkbConfig = true;
 
   # ==========================================
   # System Packages & Programs
   # ==========================================
   nixpkgs.config.allowUnfree = true;
-
+  
   environment.systemPackages = with pkgs; [
     # Core CLI
     git
@@ -92,7 +78,7 @@
     vim
     neovim
     htop
-
+    
     # Containers
     distrobox
     podman
@@ -104,13 +90,13 @@
 
   programs.zsh.enable = true;
   programs.fish.enable = true;
-
+  
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
 
   # SSH
   services.openssh.enable = true;
-
+  
   # Flatpak
   services.flatpak.enable = true;
 
@@ -118,45 +104,21 @@
   # System Maintenance
   # ==========================================
   nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
-
-  # nix.gc = {
-  #   enable = true;
-  #   dates = "weekly";
-  #   options = "--delete-older-than 30d";
-  # };
-
-  system.stateVersion = "25.05";
+  
+  system.stateVersion = "25.05"; 
 
   # ==========================================
   # Security / Limits
   # ==========================================
   security.pam.loginLimits = [
-    {
-      domain = "*";
-      item = "nofile";
-      type = "-";
-      value = "1048576";
-    }
-    {
-      domain = "*";
-      item = "nproc";
-      type = "-";
-      value = "unlimited";
-    }
-    {
-      domain = "*";
-      item = "nice";
-      type = "-";
-      value = "-20";
-    }
+    { domain = "*"; item = "nofile"; type = "-"; value = "1048576"; }
+    { domain = "*"; item = "nproc"; type = "-"; value = "unlimited"; }
+    { domain = "*"; item = "nice"; type = "-"; value = "-20"; }
   ];
-
+  
   systemd.services."user@".serviceConfig.Delegate = "memory pids cpu cpuset";
   systemd.settings.Manager.DefaultControllers = "cpu cpuset io memory pids";
 }
