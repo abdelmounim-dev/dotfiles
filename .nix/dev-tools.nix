@@ -1,5 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs) system;
+    config.allowUnfree = true;
+  };
+in
 {
   imports = [ ./core-dev-tools.nix ];
 
@@ -43,7 +49,7 @@
     postman
     insomnia
     # vscode-fhs
-    code-cursor-fhs
+    pkgs-unstable.code-cursor-fhs
     windsurf
     neovim
     zed-editor

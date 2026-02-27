@@ -37,7 +37,8 @@
   # Extra Hosts
   networking.extraHosts = ''
     3.77.166.199 vpn.smeetz.com
-    3.77.166.199 vpn.anon-sce9f.domain
+    3.77.166.199 vpn.anon-HNoHr.domain
+    3.77.166.199 vpn.anon-u8cY1.domain
   '';
 
   # DNS / Resolved
